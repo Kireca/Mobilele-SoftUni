@@ -1,10 +1,7 @@
 package softuni.mobilele.model.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
 //@Getter
 //@Setter
@@ -14,7 +11,7 @@ import lombok.Setter;
 @Entity
 public class User extends BaseEntity {
 
-
+    @Column(unique = true)
     private String email;
 
     private String password;
@@ -25,10 +22,6 @@ public class User extends BaseEntity {
 
     private boolean active;
 
-    public String getEmail() {
-        return email;
-    }
-
     public String email() {
         return email;
     }
@@ -38,7 +31,7 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public String password() {
+    public String getPassword() {
         return password;
     }
 
@@ -47,7 +40,7 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public String firstName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -56,7 +49,7 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public String lastName() {
+    public String getLastName() {
         return lastName;
     }
 
@@ -65,7 +58,7 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public boolean active() {
+    public boolean isActive() {
         return active;
     }
 
