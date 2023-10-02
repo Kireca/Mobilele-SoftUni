@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import softuni.mobilele.model.enums.EngineEnum;
-import softuni.mobilele.model.enums.Transmission;
+import softuni.mobilele.model.enums.TransmissionEnum;
 
 import java.math.BigDecimal;
 import java.sql.Types;
@@ -33,9 +33,10 @@ public class Offer extends BaseEntity {
 
 
     @Enumerated(EnumType.STRING)
-    private Transmission transmission;
+    private TransmissionEnum transmissionEnum;
 
     private String imageURL;
+
 
 
     private long mileage;
@@ -43,6 +44,17 @@ public class Offer extends BaseEntity {
     private BigDecimal price;
 
     private int year;
+
+
+
+
+
+
+
+
+
+
+
 
 
     public String description() {
@@ -72,12 +84,12 @@ public class Offer extends BaseEntity {
         return this;
     }
 
-    public Transmission transmission() {
-        return transmission;
+    public TransmissionEnum transmission() {
+        return transmissionEnum;
     }
 
-    public Offer setTransmission(Transmission transmission) {
-        this.transmission = transmission;
+    public Offer setTransmissionEnum(TransmissionEnum transmissionEnum) {
+        this.transmissionEnum = transmissionEnum;
         return this;
     }
 

@@ -15,6 +15,8 @@ public class Brand extends BaseEntity {
     @Column(unique = true, nullable = false)
     private String name;
 
+
+
     public String name() {
         return name;
     }
