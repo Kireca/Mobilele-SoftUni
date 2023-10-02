@@ -26,14 +26,14 @@ public class BrandServiceImpl implements BrandService {
         Map<String, BrandDTO> brands = new TreeMap<>();
 
         for (Model model : modelRepository.findAll()) {
-            if (!brands.containsKey(model.brand().name())) {
-                brands.put(model.brand().name(),
-                        new BrandDTO(model.brand().name(),
+            if (!brands.containsKey(model.getBrand().getName())) {
+                brands.put(model.getBrand().getName(),
+                        new BrandDTO(model.getBrand().getName(),
                                 new ArrayList<>()));
             }
 
-            brands.get(model.brand().name()).models().add(
-                    new ModelDTO(model.getId(), model.name()));
+            brands.get(model.getBrand().getName()).models().add(
+                    new ModelDTO(model.getId(), model.getName()));
 
         }
         return brands.values().stream().toList();
