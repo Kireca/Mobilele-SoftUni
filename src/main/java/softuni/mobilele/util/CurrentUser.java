@@ -36,7 +36,7 @@ public class CurrentUser {
         return sb.toString();
     }
 
-    public String firstName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -45,7 +45,7 @@ public class CurrentUser {
         return this;
     }
 
-    public String lastName() {
+    public String getLastName() {
         return lastName;
     }
 
