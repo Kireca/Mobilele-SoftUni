@@ -16,9 +16,9 @@ import java.math.BigDecimal;
 import java.sql.Types;
 import java.util.UUID;
 
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 
 @Entity
 @Table(name = "offers")
@@ -28,6 +28,7 @@ public class Offer extends BaseEntity {
     @NotNull
     @JdbcTypeCode(Types.VARCHAR)
     private UUID uuid;
+
     @NotEmpty
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -58,6 +59,9 @@ public class Offer extends BaseEntity {
     @Min(1930)
     private int year;
 
+
+
+    //TODO need to fix! Lombok must be work!
     public UUID uuid() {
         return uuid;
     }
