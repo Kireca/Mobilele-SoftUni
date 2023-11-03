@@ -48,3 +48,4 @@ open.exchange.rates:
   path: /api/latest.json
   app_id: ${APP_ID:test}
   symbols: BGN,EUR
+  enabled: false

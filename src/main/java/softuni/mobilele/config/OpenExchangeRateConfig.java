@@ -23,6 +23,7 @@ public class OpenExchangeRateConfig {
     private String path;
     private String host;
     private String schema;
+    private boolean enabled;
 
 
 }
