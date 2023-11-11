@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragments/head}">
 
@@ -20,6 +21,7 @@
             <label for="email" class="text-white font-weight-bold">Email</label>
             <input id="email"
                    name="email"
+                   th:value="${email}"
                    type="text"
                    class="form-control"
                    placeholder="Email"/>
@@ -42,8 +44,9 @@
                     max="20" class="form-control"/>
 
         </div>
-        
-        <p class="errors alert alert-danger">
+
+
+        <p th:if="${bad_credentials}" class="errors alert alert-danger">
             Invalid username or password.
         </p>
 

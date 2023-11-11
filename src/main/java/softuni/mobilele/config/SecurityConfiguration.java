@@ -47,7 +47,6 @@ public class SecurityConfiguration {
                             // The names of the input fields (in our case in auth-login.html)
                             .usernameParameter(EMAIL)
                             .passwordParameter(PASSWORD)
-//                            .usernameParameter("password")
                             .defaultSuccessUrl(HOME_PAGE)
                             .failureUrl(LOGIN_ERROR_PAGE);
                 }
@@ -59,19 +58,13 @@ public class SecurityConfiguration {
                             .logoutSuccessUrl(HOME_PAGE)
                             // delete the HTTP session
                             .invalidateHttpSession(true);
-
                 }
-        )
-              .rememberMe(
+        ).rememberMe(
                       rememberMe -> {
                           rememberMe.key(rememberMeKey)
                                   .rememberMeParameter(REMEMBER_ME)
                                   .rememberMeCookieName(REMEMBER_ME);
-
-
                       }
-
-
               )
 
               .build();
