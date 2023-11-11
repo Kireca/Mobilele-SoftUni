@@ -22,7 +22,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "offers")
-public class Offer extends BaseEntity {
+public class OfferEntity extends BaseEntity {
 
 
     @NotNull
@@ -35,7 +35,7 @@ public class Offer extends BaseEntity {
 
     @NotNull
     @ManyToOne
-    private Model model;
+    private ModelEntity modelEntity;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -66,7 +66,7 @@ public class Offer extends BaseEntity {
         return uuid;
     }
 
-    public Offer setUuid(UUID uuid) {
+    public OfferEntity setUuid(UUID uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -75,17 +75,17 @@ public class Offer extends BaseEntity {
         return description;
     }
 
-    public Offer setDescription(String description) {
+    public OfferEntity setDescription(String description) {
         this.description = description;
         return this;
     }
 
-    public Model model() {
-        return model;
+    public ModelEntity model() {
+        return modelEntity;
     }
 
-    public Offer setModel(Model model) {
-        this.model = model;
+    public OfferEntity setModelEntity(ModelEntity modelEntity) {
+        this.modelEntity = modelEntity;
         return this;
     }
 
@@ -93,7 +93,7 @@ public class Offer extends BaseEntity {
         return engine;
     }
 
-    public Offer setEngine(EngineEnum engine) {
+    public OfferEntity setEngine(EngineEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -102,7 +102,7 @@ public class Offer extends BaseEntity {
         return transmissionEnum;
     }
 
-    public Offer setTransmissionEnum(TransmissionEnum transmissionEnum) {
+    public OfferEntity setTransmissionEnum(TransmissionEnum transmissionEnum) {
         this.transmissionEnum = transmissionEnum;
         return this;
     }
@@ -111,7 +111,7 @@ public class Offer extends BaseEntity {
         return imageURL;
     }
 
-    public Offer setImageURL(String imageURL) {
+    public OfferEntity setImageURL(String imageURL) {
         this.imageURL = imageURL;
         return this;
     }
@@ -120,7 +120,7 @@ public class Offer extends BaseEntity {
         return mileage;
     }
 
-    public Offer setMileage(long mileage) {
+    public OfferEntity setMileage(long mileage) {
         this.mileage = mileage;
         return this;
     }
@@ -129,7 +129,7 @@ public class Offer extends BaseEntity {
         return price;
     }
 
-    public Offer setPrice(BigDecimal price) {
+    public OfferEntity setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -138,7 +138,7 @@ public class Offer extends BaseEntity {
         return year;
     }
 
-    public Offer setYear(int year) {
+    public OfferEntity setYear(int year) {
         this.year = year;
         return this;
     }

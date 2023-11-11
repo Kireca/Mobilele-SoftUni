@@ -13,7 +13,7 @@ import softuni.mobilele.model.enums.ModelCategoryEnum;
 
 @Entity
 @Table(name = "models")
-public class Model extends BaseEntity {
+public class ModelEntity extends BaseEntity {
 
 
     @Column(unique = true, nullable = false)
@@ -25,7 +25,7 @@ public class Model extends BaseEntity {
 
 
     @ManyToOne
-    private Brand brand;
+    private BrandEntity brand;
 
 
 }

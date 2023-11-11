@@ -2,11 +2,10 @@ package softuni.mobilele.service.impl;
 
 import org.springframework.stereotype.Service;
 import softuni.mobilele.model.dto.CreateOfferDTO;
-import softuni.mobilele.model.entity.Model;
-import softuni.mobilele.model.entity.Offer;
+import softuni.mobilele.model.entity.ModelEntity;
+import softuni.mobilele.model.entity.OfferEntity;
 import softuni.mobilele.repository.ModelRepository;
 import softuni.mobilele.repository.OfferRepository;
-import softuni.mobilele.service.BrandService;
 import softuni.mobilele.service.OfferService;
 
 import java.util.UUID;
@@ -27,20 +26,20 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public UUID createOffer(CreateOfferDTO createOfferDTO) {
 
-        Offer newOffer = map(createOfferDTO);
+        OfferEntity newOfferEntity = map(createOfferDTO);
 
-        Model modelEntity = modelRepository.findById(createOfferDTO
+        ModelEntity modelEntity = modelRepository.findById(createOfferDTO
                         .getModelId())
                 .orElseThrow(() -> new IllegalArgumentException("Model with id " + createOfferDTO.getModelId() + "not found!"));
-        newOffer.setModel(modelEntity);
+        newOfferEntity.setModelEntity(modelEntity);
 
 
-        newOffer = offerRepository.save(newOffer);
-        return newOffer.getUuid();
+        newOfferEntity = offerRepository.save(newOfferEntity);
+        return newOfferEntity.getUuid();
     }
 
-    private Offer map(CreateOfferDTO createOfferDTO) {
-        return new Offer().setUuid(UUID.randomUUID())
+    private OfferEntity map(CreateOfferDTO createOfferDTO) {
+        return new OfferEntity().setUuid(UUID.randomUUID())
                 .setDescription(createOfferDTO.getDescription())
                 .setEngine(createOfferDTO.getEngine())
                 .setTransmissionEnum(createOfferDTO.getTransmissionEnum())

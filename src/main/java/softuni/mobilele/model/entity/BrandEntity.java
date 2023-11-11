@@ -16,9 +16,9 @@ import java.util.List;
 @Table(name = "brands")
 @NamedEntityGraph(
         name = "brandWithModels",
-        attributeNodes = @NamedAttributeNode("models")
+        attributeNodes = @NamedAttributeNode("modelEntities")
 )
-public class Brand extends BaseEntity {
+public class BrandEntity extends BaseEntity {
 
 
     @Column(unique = true, nullable = false)
@@ -26,7 +26,7 @@ public class Brand extends BaseEntity {
 
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "brand")
-    private List<Model> models;
+    private List<ModelEntity> modelEntities;
 
 
 }
