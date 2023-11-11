@@ -1,5 +1,6 @@
 package softuni.mobilele.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import softuni.mobilele.model.enums.UserRoleEnum;
 import softuni.mobilele.repository.UserRepository;
 import softuni.mobilele.service.impl.MobileleUserDetailsService;
 
@@ -16,9 +18,16 @@ import static softuni.mobilele.config.constants.SecurityConstants.*;
 @Configuration
 public class SecurityConfiguration {
 
+
+    private final String rememberMeKey;
+
+    public SecurityConfiguration(@Value("${mobilele.remember.me.key}") String rememberMeKey) {
+        this.rememberMeKey = rememberMeKey;
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(
+      return   httpSecurity.authorizeHttpRequests(
                 // Define which URLs are visible by which Users
                 authorizeRequests -> authorizeRequests
                         // All static resources are available for anyone.
@@ -26,6 +35,7 @@ public class SecurityConfiguration {
                         //Allow anyone to see the home,login and registration pages.
                         .requestMatchers(HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE, LOGIN_ERROR_PAGE).permitAll()
                         .requestMatchers(ALL_OFFERS_PAGE).permitAll()
+                        .requestMatchers(ADD_BRAND_PAGE).hasRole(UserRoleEnum.ADMIN.name())
                         //All any requests are authenticated.
                         .anyRequest().authenticated()
         ).formLogin(
@@ -51,10 +61,20 @@ public class SecurityConfiguration {
                             .invalidateHttpSession(true);
 
                 }
-        );
-// TODO: REMEMBER ME!
+        )
+              .rememberMe(
+                      rememberMe -> {
+                          rememberMe.key(rememberMeKey)
+                                  .rememberMeParameter(REMEMBER_ME)
+                                  .rememberMeCookieName(REMEMBER_ME);
 
-        return httpSecurity.build();
+
+                      }
+
+
+              )
+
+              .build();
     }
 
     @Bean

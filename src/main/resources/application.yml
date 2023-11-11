@@ -36,7 +36,9 @@ spring:
   #api-key:
   #api-secret:
   #cloud-name:
-default.admin.pass: ${DEFAULT_ADMIN_PASS:topsecret}
+mobilele:
+  default.admin.pass: ${DEFAULT_ADMIN_PASS:topsecret}
+  remember.me.key: ${REMEMBER_ME:topsecret}
 logging:
   level:
     org.hibernate.SQL: DEBUG
