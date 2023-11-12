@@ -7,9 +7,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.mobilele.model.dto.CreateOfferDTO;
+import softuni.mobilele.model.dto.OfferDetailDTO;
 import softuni.mobilele.model.enums.EngineEnum;
 import softuni.mobilele.service.BrandService;
 import softuni.mobilele.service.OfferService;
+import softuni.mobilele.service.exceptions.ObjectNotFoundException;
 
 import java.util.UUID;
 
@@ -63,7 +65,28 @@ public class OfferController {
     }
 
     @GetMapping("/{uuid}")
-    public String details(@PathVariable("uuid") UUID uuid) {
+    public String details(@PathVariable("uuid") UUID uuid, Model model) {
+
+
+        OfferDetailDTO offerDetailDTO = offerService.getOfferDetail(uuid)
+                .orElseThrow(() -> new ObjectNotFoundException("Offer with uuid " + uuid + " was not found!"));
+
+        model.addAttribute("offerDetail", offerDetailDTO);
+
         return "details";
     }
+
+
+    @DeleteMapping("/{uuid}")
+    public String delete(@PathVariable("uuid") UUID uuid, Model model) {
+
+
+        offerService.deleteOffer(uuid);
+
+        return "redirect:/offers/all";
+
+
+    }
+
+
 }

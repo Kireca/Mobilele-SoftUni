@@ -32,7 +32,7 @@ public class CreateOfferDTO {
 
 
     @NotNull
-    TransmissionEnum transmissionEnum;
+    TransmissionEnum transmission;
 
     @NotEmpty
     String imageURL;

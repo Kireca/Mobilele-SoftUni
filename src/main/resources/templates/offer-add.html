@@ -30,15 +30,15 @@
                         th:errorclass="is-invalid"
 
                         class="form-control">
-                    <option value="">- Select a modelEntity -</option>
+                    <option>- Select a model -</option>
                     <optgroup
                             th:each="brand: ${brands}"
                             th:label="${brand.name()}">
                         <option
-                                th:each="modelEntity : ${brand.models()}"
-                                th:text="${modelEntity.name()}"
-                                th:value="${modelEntity.id()}"
-                                th:selected="*{modelId} == ${modelEntity.id}">
+                                th:each="model : ${brand.models()}"
+                                th:text="${model.name()}"
+                                th:value="${model.id()}"
+                                th:selected="*{modelId} == ${model.id}">
                         </option>
                     </optgroup>
                 </select>
@@ -88,19 +88,19 @@
 
             <!--            TRANSMISSION-->
             <div class="form-group col-md-6 mb-3">
-                <label class="text-center text-white font-weight-bold" for="transmissionEnum">Transmission</label>
+                <label class="text-center text-white font-weight-bold" for="transmission">Transmission</label>
                 <select
                         id="transmissionEnum"
-                        th:name="transmissionEnum"
+                        th:name="transmission"
                         th:errorclass="is-invalid"
                         class="form-control">
-                    <option value="">- Select transmissionEnum type -</option>
+                    <option value="">- Select transmission type -</option>
 
 
-                    <option th:each="t : ${T(softuni.mobilele.modelEntity.enums.TransmissionEnum).values()} "
+                    <option th:each="t : ${T(softuni.mobilele.model.enums.TransmissionEnum).values()} "
                             th:text="${t}"
                             th:value="${t}"
-                            th:selected="${t} == *{getTransmissionEnum}">
+                            th:selected="${t} == *{getTransmission}">
                     </option>
                 </select>
                 <p class="invalid-feedback errors alert alert-danger">
@@ -174,11 +174,13 @@
             <label class="text-white font-weight-bold" for="imageURL">Image URL</label>
             <input
                     id="imageURL"
-                    name="imageURL"
+                    th:name="imageURL"
+                    th:field="*{imageURL}"
+                    th:errorclass="is-invalid"
                     type="url"
                     class="form-control"
                     placeholder="Put vehicle image URL here">
-            <p class="errors alert alert-danger">
+            <p class="invalid-feedback errors alert alert-danger">
                 Vehicle image URL is required.
             </p>
         </div>

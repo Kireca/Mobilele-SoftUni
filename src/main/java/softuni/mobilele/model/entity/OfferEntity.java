@@ -35,29 +35,28 @@ public class OfferEntity extends BaseEntity {
 
     @NotNull
     @ManyToOne
-    private ModelEntity modelEntity;
-
+    private ModelEntity model;
     @NotNull
     @Enumerated(EnumType.STRING)
     private EngineEnum engine;
-
     @NotNull
     @Enumerated(EnumType.STRING)
-    private TransmissionEnum transmissionEnum;
-
+    private TransmissionEnum transmission;
     @NotEmpty
+    @Column(name = "image_URL")
     private String imageURL;
-
     @Positive
     @Column(nullable = false)
     private long mileage;
-
     @NotNull
     @Column(nullable = false)
     private BigDecimal price;
 
     @Min(1930)
     private int year;
+
+
+
 
 
 
@@ -81,11 +80,11 @@ public class OfferEntity extends BaseEntity {
     }
 
     public ModelEntity model() {
-        return modelEntity;
+        return model;
     }
 
-    public OfferEntity setModelEntity(ModelEntity modelEntity) {
-        this.modelEntity = modelEntity;
+    public OfferEntity setModel(ModelEntity model) {
+        this.model = model;
         return this;
     }
 
@@ -98,12 +97,12 @@ public class OfferEntity extends BaseEntity {
         return this;
     }
 
-    public TransmissionEnum transmissionEnum() {
-        return transmissionEnum;
+    public TransmissionEnum transmission() {
+        return transmission;
     }
 
-    public OfferEntity setTransmissionEnum(TransmissionEnum transmissionEnum) {
-        this.transmissionEnum = transmissionEnum;
+    public OfferEntity setTransmission(TransmissionEnum transmission) {
+        this.transmission = transmission;
         return this;
     }
 
@@ -142,4 +141,6 @@ public class OfferEntity extends BaseEntity {
         this.year = year;
         return this;
     }
+
+
 }

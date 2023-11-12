@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head}">
+
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+<div class="container-fluid">
+
+    <h5 class="text-center text-white mt-5">Upps, the thingy that you are looking for is not longer here!</h5>
+    <h5 class="text-center text-white mt-5">We are very sorry!</h5>
+    <img th:src="@{/images/brokenCar.jpg}" alt="Broken car">
+    <br/>
+    <a th:href="@{/}">Go home...</a>
+</div>
+
+<div>
+    <footer></footer>
+</div>
+
+</body>
+</html>
