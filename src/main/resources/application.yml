@@ -1,54 +1,50 @@
-spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/mobilele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: ${MYSQL_USER:}
-    password: ${MYSQL_PASSWORD:}
-  servlet:
-    multipart:
-      max-file-size: 1MB
-      max-request-size: 5MB
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: true
-  sql:
-    init:
-      mode: never
-
-
-
-  jpa:
-    # Choose either MySQL 8 or MySQL 5 below
-    # For MySQL 8
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    #For MySQL 5
-    #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
-    defer-datasource-initialization: true
-  #Cloudinary Properties
-  #cloudinary:
-  #api-key:
-  #api-secret:
-  #cloud-name:
-mobilele:
-  default.admin.pass: ${DEFAULT_ADMIN_PASS:topsecret}
-  remember.me.key: ${REMEMBER_ME:topsecret}
 logging:
-  level:
-    org.hibernate.SQL: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
-#    org.springframework.security: TRACE
-
-open.exchange.rates:
-  schema: https
-  host: openexchangerates.org
-  path: /api/latest.json
-  app_id: ${APP_ID:test}
-  symbols: BGN,EUR
-  enabled: false
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+                orm:
+                    jdbc:
+                        bind: TRACE
+mobilele:
+    default:
+        admin:
+            pass: ${DEFAULT_ADMIN_PASS:topsecret}
+    remember:
+        me:
+            key: ${REMEMBER_ME:topsecret}
+open:
+    exchange:
+        rates:
+            app_id: ${APP_ID:test}
+            enabled: false
+            host: openexchangerates.org
+            path: /api/latest.json
+            schema: https
+            symbols: BGN,EUR
+spring:
+    datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        password: ${MYSQL_PASSWORD:}
+        url: jdbc:mysql://localhost:3306/mobilele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+        username: ${MYSQL_USER:}
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        defer-datasource-initialization: true
+        hibernate:
+            ddl-auto: update
+        open-in-view: false
+        properties:
+            hibernate:
+                format_sql: true
+    mvc:
+        hiddenmethod:
+            filter:
+                enabled: true
+    servlet:
+        multipart:
+            max-file-size: 1MB
+            max-request-size: 5MB
+    sql:
+        init:
+            mode: never
