@@ -12,7 +12,6 @@ import softuni.mobilele.model.entity.OfferEntity;
 import softuni.mobilele.repository.ModelRepository;
 import softuni.mobilele.repository.OfferRepository;
 import softuni.mobilele.service.OfferService;
-import softuni.mobilele.service.exceptions.ObjectNotFoundException;
 
 import java.util.Optional;
 import java.util.UUID;

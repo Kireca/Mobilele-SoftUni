@@ -5,9 +5,13 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import softuni.mobilele.model.validation.UniqueUserEmail;
 
-public record UserRegistrationDTO(@NotEmpty String  firstName ,
-                                @NotEmpty  String lastName,
-                              @NotNull @Email @UniqueUserEmail String email,
+public record UserRegistrationDTO(@NotEmpty String firstName,
+                                  @NotEmpty String lastName,
+                                  @NotNull @Email @UniqueUserEmail String email,
                                   String password,
                                   String confirmPassword) {
+
+    public String fullName() {
+        return firstName + " " + lastName;
+    }
 }

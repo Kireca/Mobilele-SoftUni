@@ -30,7 +30,6 @@ public class UserRegistrationController {
 
         //TODO Registration email with activation link.
 
-
         userService.registerUser(userRegistrationDTO);
 
         return "redirect:/";

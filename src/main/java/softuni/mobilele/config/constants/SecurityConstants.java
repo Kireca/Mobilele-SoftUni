@@ -14,4 +14,5 @@ public final class SecurityConstants {
     public static final String ALL_OFFERS_PAGE = "/offers/all";
     public static final String ADD_BRAND_PAGE = "/brands";
     public static final String ERROR = "/error";
+    public static final String OFFER_PATHS = "/offer/**";
 }
